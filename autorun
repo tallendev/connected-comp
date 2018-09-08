@@ -1,4 +1,4 @@
 #!/bin/bash -x
 
 make
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:. ./concomp ./cond-mat-2003/cond-mat-2003.mtx
+time LD_LIBRARY_PATH=$LD_LIBRARY_PATH:. ./concomp ./cond-mat-2003/cond-mat-2003.mtx

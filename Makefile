@@ -1,7 +1,7 @@
 CC=gcc #clang++ #g++
 CXX=g++
 NVCC=nvcc
-NVFLAGS=-Xcompiler -rdynamic -G -g --gpu-architecture=compute_61 --gpu-code=sm_61 -expt-relaxed-constexpr --std=c++11
+NVFLAGS=-Xcompiler -rdynamic -G -g --gpu-architecture=compute_61 --gpu-code=sm_61 -expt-relaxed-constexpr --std=c++11 -Xcompiler "-O3 -march=x86-64 -mtune=native"
 CXXFLAGS=-g -Wall -Wextra -std=c++11 -Weffc++
 CFLAGS=-g -Wall -Wextra 
 SOURCES=connected_components.cu
