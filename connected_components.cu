@@ -104,7 +104,6 @@ int main(int argc, char* argv[])
     }
     // convert mm to csr
     int err = sparse_matrix_convert (mat, sparse_matrix_storage_format_t::CSR);
-    printf("err: %d\n", err);
     
     // extract csr
     struct csr_matrix_t* cmat = (struct csr_matrix_t*) mat->repr;
@@ -145,7 +144,7 @@ int main(int argc, char* argv[])
     CHECK_CUDA_ERROR();
 
     // lets you know if you alloc too much memory : )
-    printf("Allocated: %lu MB\n", (sizeof(int) * nnz + 2 * sizeof(int) * (m + 1)) / 1000000);
+    printf("Sparse Structure requires %lu MB GPU memory\n", (sizeof(int) * nnz + 2 * sizeof(int) * (m + 1)) / 1000000);
     
     // copy sparse matrix into gpu memory
     cudaMemcpy(I, cmat->rowptr, sizeof(int) * (m + 1), cudaMemcpyHostToDevice);

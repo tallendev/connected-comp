@@ -1,7 +1,7 @@
 CC=gcc #clang++ #g++
 CXX=g++
 NVCC=nvcc
-NVFLAGS=-Xcompiler -rdynamic -G -g --gpu-architecture=compute_60 --gpu-code=sm_70,sm_61 -expt-relaxed-constexpr --std=c++11
+NVFLAGS=-Xcompiler -rdynamic -G -g --gpu-architecture=compute_61 --gpu-code=sm_61 -expt-relaxed-constexpr --std=c++11
 CXXFLAGS=-g -Wall -Wextra -std=c++11 -Weffc++
 CFLAGS=-g -Wall -Wextra 
 SOURCES=connected_components.cu
@@ -17,7 +17,7 @@ LDFLAGS=-L/usr/local/cuda/lib64 -lcudart -lsparse_matrix_converter -lbebop_util
 all: $(OBJ) $(HEADER) $(SOURCES) $(EXE)
 
 $(EXE): $(OBJ) $(HEADER) $(SOURCES)
-	$(NVCC) $(NVFLAGS) $(DEFS) -Xcompiler="$(CXXFLAGS)" $(OBJ) -o $(EXE) $(LDFLAGS)
+	$(NVCC) $(NVFLAGS) $(DEFS) -Xcompiler="$(CXXFLAGS)" $(OBJ) -o $(EXE) $(LDFLAGS) -L.
 
 .cpp.o: $(SOURCES) $(INC) $(HEADER)
 	$(CXX) $(DEFS) $(INC) -c $(CXXFLAGS) $< -o $@
